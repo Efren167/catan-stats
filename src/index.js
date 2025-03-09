@@ -1,18 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client'; // Cambiado a createRoot
-import { BrowserRouter } from 'react-router-dom';
+import ReactDOM from 'react-dom/client';
+import { HashRouter } from 'react-router-dom'; // Cambiado a HashRouter
 import App from './App';
 import './index.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-
-
-
-const root = ReactDOM.createRoot(document.getElementById('root')); // Usando createRoot
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
+  <HashRouter> {/* Ahora usa HashRouter en lugar de BrowserRouter */}
     <App />
-  </BrowserRouter>
+  </HashRouter>
 );
