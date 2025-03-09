@@ -17,12 +17,35 @@
   z-index: -1;
 }
 
+/* Estilos del header */
 header {
-  height: 60px; /* Altura fija */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: var(--bs-danger) !important; /* Usa el color bg-danger de Bootstrap */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  z-index: 1000;
 }
 
 .menu-toggle {
   font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  text-align: center;
+  flex-grow: 1;
 }
 
 .sidebar {
@@ -33,6 +56,7 @@ header {
   height: calc(100% - 60px); /* Ajusta la altura */
   background-color: #f8f9fa; /* Fondo gris claro */
   transition: left 0.3s ease; /* Animación suave al abrir/cerrar */
+  z-index: 999;
 }
 
 .sidebar.open {
@@ -45,4 +69,32 @@ header {
 
 main {
   height: calc(100vh - 60px); /* Resta la altura del header */
+  padding-top: 20px; /* Espacio adicional debajo del header fijo */
+}
+
+/* Estilos para el overlay cuando el sidebar está abierto */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 60px; /* Debe coincidir con la altura del header */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}
+
+.overlay.active {
+  display: block;
+}
+
+/* Estilos para botones principales */
+.btn-primary {
+  background-color: var(--bs-danger);
+  border-color: var(--bs-danger);
+}
+
+.btn-primary:hover {
+  background-color: var(--bs-danger-dark);
+  border-color: var(--bs-danger-dark);
 }
