@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, Tooltip, Legend } from 'recharts';
+import {
+  BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, Tooltip, Legend,
+  ResponsiveContainer
+} from 'recharts';
 
 const Stats = () => {
   // Datos de ejemplo (deberías conectarlo a tu backend o estado)
@@ -35,7 +38,7 @@ const Stats = () => {
     victoryAnalysis: [
       { type: 'Ciudades', count: 22 },
       { type: 'Poblados', count: 22 },
-      { type: 'Mas carreteras', count: 9 },
+      { type: 'Más carreteras', count: 9 },
       { type: 'Cartas de caballero', count: 12 }
     ],
     luckAnalysis: {
@@ -48,6 +51,13 @@ const Stats = () => {
   };
 
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
+  const luckLabels = {
+    veryUnlucky: 'Muy mala suerte',
+    unlucky: 'Mala suerte',
+    average: 'Suerte promedio',
+    lucky: 'Buena suerte',
+    veryLucky: 'Muy buena suerte'
+  };
 
   return (
     <div>
@@ -62,7 +72,7 @@ const Stats = () => {
       {/* Contenido principal */}
       <div className="container mt-4">
         <h2 className="text-center mb-4">Estadísticas de Partidas</h2>
-        
+
         {/* Sección de Resumen General */}
         <div className="row mb-4">
           <div className="col-md-3">
@@ -83,7 +93,6 @@ const Stats = () => {
               </div>
             </div>
           </div>
-          {/* Añadir más tarjetas según necesidad */}
         </div>
 
         {/* Distribución de Recursos */}
@@ -92,25 +101,31 @@ const Stats = () => {
             <h5>Distribución de Recursos Obtenidos</h5>
           </div>
           <div className="card-body">
-            <PieChart width={400} height={300}>
-              <Pie
-                data={statsData.resources}
-                cx={200}
-                cy={150}
-                labelLine={false}
-                outerRadius={80}
-                fill="#8884d8"
-                dataKey="value"
-              >
-                {statsData.resources.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
+            <div style={{ width: '100%', height: 300 }}>
+              <ResponsiveContainer>
+                <PieChart>
+                  <Pie
+                    data={statsData.resources}
+                    cx="50%"
+                    cy="50%"
+                    labelLine={false}
+                    outerRadius={80}
+                    dataKey="value"
+                    isAnimationActive={false}
+                  >
+                    {
+                      statsData.resources.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                      ))
+                    }
+                  </Pie>
+                  <Tooltip />
+                  <Legend />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
             <p className="text-muted mt-2">
-              Los recursos más comunes influyen en tus estrategias de construcción
+              Los recursos más comunes influyen en tus estrategias de construcción.
             </p>
           </div>
         </div>
@@ -121,15 +136,25 @@ const Stats = () => {
             <h5>Frecuencia de Números en Dados</h5>
           </div>
           <div className="card-body">
-            <BarChart width={500} height={300} data={statsData.diceStats}>
-              <XAxis dataKey="number" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="count" fill="#8884d8" />
-            </BarChart>
+            <div style={{ width: '100%', height: 300 }}>
+              <ResponsiveContainer>
+                <BarChart data={statsData.diceStats}>
+                  <XAxis dataKey="number" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="count" fill="#8884d8" isAnimationActive={false} />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
             <p className="text-muted mt-2">
-              El número 7 (robador) aparece en el {Math.round((statsData.diceStats.find(d => d.number === 7)?.count / statsData.diceStats.reduce((a,b) => a + b.count, 0)) * 100)}% de las tiradas
+              El número 7 (robador) aparece en el{' '}
+              {Math.round(
+                (statsData.diceStats.find((d) => d.number === 7)?.count /
+                  statsData.diceStats.reduce((a, b) => a + b.count, 0)) *
+                100
+              )}
+              % de las tiradas.
             </p>
           </div>
         </div>
@@ -153,7 +178,7 @@ const Stats = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Análisis de Suerte */}
           <div className="col-md-6">
             <div className="card h-100">
@@ -161,14 +186,24 @@ const Stats = () => {
                 <h5>Distribución de Suerte en Partidas</h5>
               </div>
               <div className="card-body">
-                <div className="progress mb-3" style={{ height: '30px' }}>
-                  <div className="progress-bar bg-danger" style={{ width: `${(statsData.luckAnalysis.veryUnlucky / statsData.general.totalGames) * 100}%` }}>
-                    Muy mala suerte
-                  </div>
-                </div>
-                {/* Repetir para otros niveles de suerte */}
+                <ul className="list-unstyled">
+                  {Object.entries(statsData.luckAnalysis).map(([key, value], index) => (
+                    <li key={key} className="d-flex align-items-center mb-2">
+                      <span
+                        className="me-2"
+                        style={{
+                          width: '20px',
+                          height: '20px',
+                          backgroundColor: COLORS[index],
+                          display: 'inline-block'
+                        }}
+                      ></span>
+                      <span>{luckLabels[key]}: {value}</span>
+                    </li>
+                  ))}
+                </ul>
                 <small className="text-muted">
-                  Basado en la distribución inicial de recursos y tiradas clave
+                  Basado en la distribución inicial de recursos y tiradas clave.
                 </small>
               </div>
             </div>
@@ -193,7 +228,6 @@ const Stats = () => {
                   <td>% Victorias</td>
                   <td>{statsData.general.winRate}%</td>
                 </tr>
-                {/* Añadir más filas */}
               </tbody>
             </table>
           </div>

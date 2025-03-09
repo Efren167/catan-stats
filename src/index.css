@@ -98,3 +98,13 @@ main {
   background-color: var(--bs-danger-dark);
   border-color: var(--bs-danger-dark);
 }
+
+.responsive-chart {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.responsive-chart svg {
+  max-width: 100%;
+  height: auto;
+}
