@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/catan-stats/static/css/main.224b0f49.css",
+    "main.js": "/catan-stats/static/js/main.d78daecb.js",
+    "static/media/colonos-catan-image.webp": "/catan-stats/static/media/colonos-catan-image.63ea36fb85843ee44ad5.webp",
+    "static/media/fa-solid-900.ttf": "/catan-stats/static/media/fa-solid-900.2582b0e4bcf85eceead0.ttf",
+    "static/media/fa-brands-400.ttf": "/catan-stats/static/media/fa-brands-400.1815e00441357e01619e.ttf",
+    "static/media/fa-solid-900.woff2": "/catan-stats/static/media/fa-solid-900.2463b90d9a316e4e5294.woff2",
+    "static/media/fa-brands-400.woff2": "/catan-stats/static/media/fa-brands-400.c210719e60948b211a12.woff2",
+    "static/media/fa-regular-400.ttf": "/catan-stats/static/media/fa-regular-400.914997e1bdfc990d0897.ttf",
+    "static/media/fa-regular-400.woff2": "/catan-stats/static/media/fa-regular-400.89999bdf5d835c012025.woff2",
+    "static/media/fa-v4compatibility.ttf": "/catan-stats/static/media/fa-v4compatibility.da94ef451f4969af06e6.ttf",
+    "static/media/fa-v4compatibility.woff2": "/catan-stats/static/media/fa-v4compatibility.ea8f94e1d22e0d35ccd4.woff2",
+    "index.html": "/catan-stats/index.html",
+    "main.224b0f49.css.map": "/catan-stats/static/css/main.224b0f49.css.map",
+    "main.d78daecb.js.map": "/catan-stats/static/js/main.d78daecb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.224b0f49.css",
+    "static/js/main.d78daecb.js"
+  ]
+}
