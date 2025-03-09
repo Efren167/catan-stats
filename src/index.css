@@ -10,7 +10,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('ruta-a-tu-imagen-de-catan.jpg');
+  background-image: url('./assets/colonos-catan-image.webp');
   background-size: cover;
   background-position: center;
   opacity: 0.2;
@@ -18,52 +18,31 @@
 }
 
 header {
-  padding: 1rem;
-  background-color: rgba(255, 255, 255, 0.8);
-  display: flex;
-  align-items: center;
+  height: 60px; /* Altura fija */
 }
 
 .menu-toggle {
-  background: none;
-  border: none;
   font-size: 1.5rem;
-  cursor: pointer;
-  margin-right: 1rem;
 }
 
 .sidebar {
   position: fixed;
-  top: 0;
-  left: -250px;
+  top: 60px; /* Separado del header */
+  left: -250px; /* Oculto por defecto */
   width: 250px;
-  height: 100%;
-  background-color: #f0f0f0;
-  transition: left 0.3s ease;
-  z-index: 1000;
+  height: calc(100% - 60px); /* Ajusta la altura */
+  background-color: #f8f9fa; /* Fondo gris claro */
+  transition: left 0.3s ease; /* Animación suave al abrir/cerrar */
 }
 
 .sidebar.open {
-  left: 0;
+  left: 0; /* Mueve el menú a la vista cuando está abierto */
 }
 
-.sidebar ul {
-  list-style-type: none;
-  padding: 1rem;
-}
-
-.sidebar li {
-  margin-bottom: 1rem;
-  cursor: pointer;
+.sidebar ul li {
+  margin-bottom: 1rem; /* Espaciado entre elementos */
 }
 
 main {
-  padding: 2rem;
-}
-
-@media (max-width: 768px) {
-  .sidebar {
-    width: 100%;
-    left: -100%;
-  }
+  height: calc(100vh - 60px); /* Resta la altura del header */
 }
