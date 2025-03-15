@@ -51,7 +51,7 @@ const Home = ({ user, onLogout }) => {
       <div className={`overlay ${menuOpen ? 'active' : ''}`} onClick={() => setMenuOpen(false)}></div>
       
       <main className="d-flex flex-column justify-content-center align-items-center text-center">
-        <h2>Bienvenido{a => user?.displayName ? `, ${user.displayName}` : ''}</h2>
+      <h2>Bienvenido{user?.displayName ? `, ${user.displayName}` : ''}</h2>
         <p>Registra tus partidas y consulta estadísticas de Catan.</p>
       </main>
     </div>
