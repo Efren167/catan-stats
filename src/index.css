@@ -1,3 +1,4 @@
+/* Estilos globales */
 .home {
   position: relative;
   min-height: 100vh;
@@ -24,7 +25,7 @@ header {
   left: 0;
   right: 0;
   height: 60px;
-  background-color: var(--bs-danger) !important; /* Usa el color bg-danger de Bootstrap */
+  background-color: var(--bs-danger) !important;
   color: white;
   display: flex;
   align-items: center;
@@ -50,33 +51,32 @@ header h1 {
 
 .sidebar {
   position: fixed;
-  top: 60px; /* Separado del header */
-  left: -250px; /* Oculto por defecto */
+  top: 60px;
+  left: -250px;
   width: 250px;
-  height: calc(100% - 60px); /* Ajusta la altura */
-  background-color: #f8f9fa; /* Fondo gris claro */
-  transition: left 0.3s ease; /* Animación suave al abrir/cerrar */
+  height: calc(100% - 60px);
+  background-color: #f8f9fa;
+  transition: left 0.3s ease;
   z-index: 999;
 }
 
 .sidebar.open {
-  left: 0; /* Mueve el menú a la vista cuando está abierto */
+  left: 0;
 }
 
 .sidebar ul li {
-  margin-bottom: 1rem; /* Espaciado entre elementos */
+  margin-bottom: 1rem;
 }
 
 main {
-  height: calc(100vh - 60px); /* Resta la altura del header */
-  padding-top: 20px; /* Espacio adicional debajo del header fijo */
+  height: calc(100vh - 60px);
+  padding-top: 20px;
 }
 
-/* Estilos para el overlay cuando el sidebar está abierto */
 .overlay {
   display: none;
   position: fixed;
-  top: 60px; /* Debe coincidir con la altura del header */
+  top: 60px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -88,7 +88,6 @@ main {
   display: block;
 }
 
-/* Estilos para botones principales */
 .btn-primary {
   background-color: var(--bs-danger);
   border-color: var(--bs-danger);
@@ -108,3 +107,93 @@ main {
   max-width: 100%;
   height: auto;
 }
+
+/* Estilos para LoginPage */
+.login-container {
+  background: linear-gradient(135deg, #6b6b6b 0%, #2d2d2d 100%);
+  background-size: 400% 400%; /* Para animar el gradiente */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: gradientAnimation 10s ease infinite; /* Animación del fondo */
+}
+
+/* Animación del gradiente de fondo */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.login-container {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 300% 300%;
+  animation: gradientAnimation 10s ease infinite;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.login-container .card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+.login-container h2 {
+  color: var(--bs-danger);
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  text-align: center;
+}
+
+.login-container button {
+  padding: 12px 24px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  width: 100%;
+  background: linear-gradient(45deg, var(--bs-danger), #ff6b6b);
+  border: none;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: clamp(0.8rem, 3vw, 1rem);
+}
+
+.login-container button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, .3);
+  background: linear-gradient(45deg, #ff6b6b, var(--bs-danger));
+}
+
+.login-container .fab {
+  margin-right: .75rem;
+  font-size: 1.2em;
+}
+
+@media (max-width: 480px) {
+  .login-container .card {
+    padding: 1.5rem;
+  }
+  
+  .login-container button {
+    padding: 10px 20px;
+  }
+}
+
